@@ -16,7 +16,6 @@ class Translation extends Component {
     }
     getList() {
         const {list} = this.props;
-        console.log(list)
         return list.map((item) => {return <div key={item.id}>{item.title}</div>})
     }
     render() {
@@ -41,9 +40,9 @@ class Translation extends Component {
     }
     
 }
-Translation.loadData = (store) => {
-    return store.dispatch(getTranslationList());
-}
+// Translation.loadData = (store) => {
+//     return store.dispatch(getTranslationList());
+// }
 
 const mapStateToProps =  (state) => {
     return {
@@ -58,4 +57,14 @@ const mapDispatchToprops = dispatch => {
         }
     }
 }
-export default connect(mapStateToProps, mapDispatchToprops)(withStyle(Translation,style));
+
+const ExportTranslation = connect(mapStateToProps, mapDispatchToprops)(withStyle(Translation, style));
+
+ExportTranslation.loadData = (store) => {
+	return store.dispatch(getTranslationList());
+}
+
+export default ExportTranslation;
+
+
+// export default connect(mapStateToProps, mapDispatchToprops)(withStyle(Translation,style));

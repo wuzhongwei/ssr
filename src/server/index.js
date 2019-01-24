@@ -9,7 +9,6 @@ import proxy from 'koa-proxies';
 import {render} from './utils';
 import {getStore} from '../store';
 import routes from '../Routes';
-import { reject } from 'any-promise';
 
 const app = new Koa();
 
@@ -43,7 +42,7 @@ app.use( async (ctx) => {
     await Promise.all(promises).then(() => {
         const context = {css: [] }; // 存服务端渲染的style
         const html = render(store, routes, ctx, context);
-        
+        console.log('html', html)
         if (context.action == 'REPLACE') { // 前端 重定向后会返回context.action
             ctx.redirect(context.url);
         } else if (context.NotFound) { 

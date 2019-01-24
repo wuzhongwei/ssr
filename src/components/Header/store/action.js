@@ -21,7 +21,6 @@ export const logout = () => {
 export const getHeadInfo = () => {
     return (dispatch,getState, axiosIns) => {
        return axiosIns.get('/api/isLogin.json').then((res) => {
-
              dispatch(changeLogin(res.data.data.login))
         })
     }

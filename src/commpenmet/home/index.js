@@ -33,9 +33,9 @@ class Home extends Component {
     }
     
 }
-Home.loadData = (store) => {
-    return store.dispatch(getHomeList(true));
-}
+// Home.loadData = (store) => {
+//     return store.dispatch(getHomeList());
+// }
 
 const mapStateToProps =  (state) => {
     return {
@@ -49,4 +49,13 @@ const mapDispatchToprops = dispatch => {
         }
     }
 }
-export default connect(mapStateToProps, mapDispatchToprops)(withStyle(Home,style));
+
+const ExportHome = connect(mapStateToProps, mapDispatchToprops)(withStyle(Home, style));
+
+ExportHome.loadData = (store) => {
+	return store.dispatch(getHomeList());
+}
+
+export default ExportHome;
+
+// export default connect(mapStateToProps, mapDispatchToprops)(withStyle(Home,style));
